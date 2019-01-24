@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 @Entity
 @Table(name = "operators")
 public class Operator {
@@ -20,11 +24,11 @@ public class Operator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_operator", nullable = false)
-    private int id;
+    private Integer id;
     @Column(name = "Family", length = 50)
     private String family;
     @Column(name = "Name", length = 50)
-    private String  name;
+    private String name;
     @Column(name = "Farth", length = 50)
     private String farth;
     @Column(length = 50)
@@ -34,7 +38,7 @@ public class Operator {
     @Column(name = "dp_FIO", length = 150)
     private String dpFIO;
     @Column(length = 50)
-    private String  logname;
+    private String logname;
     @Column(name = "log_name", length = 50)
     private String logName;
     @Column(length = 50)
@@ -51,12 +55,12 @@ public class Operator {
     @Column(name = "no_visible")
     private Byte noVisible;
     @Column(name = "id_otdel", nullable = false)
-    private int otdelId;
+    private Integer otdelId;
     @Column(name = "GlobalKey", nullable = false)
-    private
-    UUID globalKey;
+    private UUID globalKey;
+    @Enumerated(EnumType.ORDINAL)
     @Column(nullable = false)
-    private short position;
+    private Position position;
     @Column(name = "rabbit_status")
     private Short rabbitStatus;
     @Temporal(TemporalType.TIMESTAMP)
@@ -66,16 +70,16 @@ public class Operator {
     private Integer syncOtdelId;
 
     @PrePersist
-    public void onPrePersist(){
+    public void onPrePersist() {
         globalKey = UUID.randomUUID();
         lastUpdateDate = new Date();
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -191,11 +195,11 @@ public class Operator {
         this.noVisible = noVisible;
     }
 
-    public int getOtdelId() {
+    public Integer getOtdelId() {
         return otdelId;
     }
 
-    public void setOtdelId(int otdelId) {
+    public void setOtdelId(Integer otdelId) {
         this.otdelId = otdelId;
     }
 
@@ -207,11 +211,11 @@ public class Operator {
         this.globalKey = globalKey;
     }
 
-    public short getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(short position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
@@ -237,5 +241,16 @@ public class Operator {
 
     public void setSyncOtdelId(Integer syncOtdelId) {
         this.syncOtdelId = syncOtdelId;
+    }
+
+    public enum Position {
+        OPERATOR("Оператор"), OTHER("Другой");
+
+        @JsonValue
+        private String value;
+
+        Position(String value) {
+            this.value = value;
+        }
     }
 }

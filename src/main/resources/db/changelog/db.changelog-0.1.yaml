@@ -1,0 +1,88 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 240120192020
+      author: ocmwdt
+      changes:
+        - createTable:
+            tableName: operators
+            columns:
+              - column:
+                  name: id_operator
+                  type: INTEGER
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: Family
+                  type: VARCHAR(50)
+              - column:
+                  name: Name
+                  type: VARCHAR(50)
+              - column:
+                  name: Farth
+                  type: VARCHAR(50)
+              - column:
+                  name: pass
+                  type: VARCHAR(50)
+              - column:
+                  name: role
+                  type: SMALLINT
+              - column:
+                  name: dp_FIO
+                  type: VARCHAR(150)
+              - column:
+                  name: logname
+                  type: VARCHAR(50)
+              - column:
+                  name: log_name
+                  type: VARCHAR(50)
+              - column:
+                  name: phone
+                  type: VARCHAR(50)
+              - column:
+                  name: DOB
+                  type: DATE
+              - column:
+                  name: picture
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    defaultValue:
+              - column:
+                  name: passport
+                  type: VARCHAR(50)
+              - column:
+                  name: snils
+                  type: VARCHAR(50)
+              - column:
+                  name: no_visible
+                  type: TINYINT
+                  defaultValue: 0
+              - column:
+                  name: id_otdel
+                  type: INTEGER
+                  defaultValue: 186
+                  constraints:
+                    nullable: false
+              - column:
+                  name: GlobalKey
+                  type: UUID
+                  constraints:
+                    nullable: false
+              - column:
+                  name: position
+                  type: SMALLINT
+                  defaultValue: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rabbit_status
+                  type: SMALLINT
+              - column:
+                  name: date_last_update
+                  type: DATETIME
+              - column:
+                  name: Id_Otdel_Sync
+                  type: INTEGER

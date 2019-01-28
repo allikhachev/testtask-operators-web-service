@@ -36,7 +36,15 @@ public class OperatorsController {
         return service.getOperator(query);
     }
 
+    @PostMapping()
+    public BaseResponse addOperator(@Valid @RequestBody Operator operator) {
+        return service.addOperator(operator);
+    }
+
     private ErrorResponse getError(Exception ex) {
-        return new ErrorResponse(ex.getMessage());
+        return new ErrorResponse(
+                ex.getMessage() != null
+                        ? ex.getMessage()
+                        : ex.getClass().getSimpleName());
     }
 }

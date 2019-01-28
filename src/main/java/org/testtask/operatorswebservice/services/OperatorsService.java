@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.testtask.operatorswebservice.exception.ResourceNotFoundException;
+import org.testtask.operatorswebservice.model.BaseResponse;
 import org.testtask.operatorswebservice.model.Operator;
 import org.testtask.operatorswebservice.model.OperatorQuery;
 import org.testtask.operatorswebservice.model.SuccessSearchResponse;
@@ -33,12 +34,17 @@ public class OperatorsService {
         response.setName(operator.getName());
         response.setPatronymic(operator.getFarth());
         response.setPosition(operator.getPosition());
-        return null;
+        return response;
     }
 
     private Operator toExample(OperatorQuery query) {
         Operator exampleOperator = new Operator();
         exampleOperator.setSnils(query.getSnils());
         return exampleOperator;
+    }
+
+    public BaseResponse addOperator(Operator operator) {
+        repository.save(operator);
+        return new BaseResponse(true, "Успешно добавлено");
     }
 }

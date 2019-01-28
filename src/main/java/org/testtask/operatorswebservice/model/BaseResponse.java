@@ -5,7 +5,7 @@ public class BaseResponse {
     private Boolean success;
     private String description;
 
-    BaseResponse(Boolean success, String description) {
+    public BaseResponse(Boolean success, String description) {
         this.success = success;
         this.description = description;
     }

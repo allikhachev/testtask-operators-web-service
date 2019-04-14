@@ -16,7 +16,7 @@ import org.testtask.operatorswebservice.model.SuccessSearchResponse;
 import org.testtask.operatorswebservice.services.OperatorsService;
 
 @RestController
-@RequestMapping("/ws/operators")
+@RequestMapping(value = "/ws/operators")
 public class OperatorsController {
 
     private OperatorsService service;

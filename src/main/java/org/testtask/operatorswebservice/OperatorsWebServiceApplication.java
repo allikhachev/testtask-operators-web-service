@@ -13,6 +13,4 @@ public class OperatorsWebServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OperatorsWebServiceApplication.class, args);
 	}
-
 }
-

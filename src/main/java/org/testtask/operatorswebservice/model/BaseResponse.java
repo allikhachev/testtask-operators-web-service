@@ -1,5 +1,10 @@
 package org.testtask.operatorswebservice.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class BaseResponse {
 
     private Boolean success;
@@ -10,19 +15,7 @@ public class BaseResponse {
         this.description = description;
     }
 
-    public Boolean getSuccess() {
-        return success;
-    }
-
-    public void setSuccess(Boolean success) {
-        this.success = success;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public BaseResponse() {
+        this(true, "Успешно добавлено");
     }
 }

@@ -1,7 +1,12 @@
 package org.testtask.operatorswebservice.model;
 
-import javax.persistence.Column;
+import org.testtask.operatorswebservice.model.Operator.Position;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class SuccessSearchResponse extends BaseResponse {
 
     private Integer id;
@@ -9,57 +14,26 @@ public class SuccessSearchResponse extends BaseResponse {
     private String name;
     private String patronymic;
     private Operator.Position position;
-    private String branch = "Уполномоченный МФЦ";
+    private String branch;
+
+    public SuccessSearchResponse(final Boolean success, final String description) {
+        super(success, description);
+        branch = "Уполномоченный МФЦ";
+    }
 
     public SuccessSearchResponse() {
-        super(true, "Операция выполнена успешно");
+        this(true, "Операция выполнена успешно");
+        branch = "Уполномоченный МФЦ";
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public SuccessSearchResponse(final Integer id,
+            final String surname, final String name,
+            final String patronymic, final Position position) {
+        this();
         this.id = id;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
-    }
-
-    public Operator.Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Operator.Position position) {
         this.position = position;
-    }
-
-    public String getBranch() {
-        return branch;
-    }
-
-    public void setBranch(String branch) {
-        this.branch = branch;
     }
 }

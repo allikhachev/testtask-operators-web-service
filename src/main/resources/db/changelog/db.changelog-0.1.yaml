@@ -86,3 +86,34 @@ databaseChangeLog:
               - column:
                   name: Id_Otdel_Sync
                   type: INTEGER
+
+        - insert:
+            tableName: operators
+            columns:
+              - column:
+                  name: id_operator
+                  value: 1
+              - column:
+                  name: family
+                  value: "Хвостова"
+              - column:
+                  name: name
+                  value: "Екатерина"
+              - column:
+                  name: farth
+                  value: "Юрьевна"
+              - column:
+                  name: picture
+                  value: "picture"
+              - column:
+                  name: snils
+                  value: "108-003-636 06"
+              - column:
+                  name: id_otdel
+                  value: 0
+              - column:
+                  name: globalKey
+                  value: "c93e372f-f4ac-4ab3-8176-b0990c870ffb"
+              - column:
+                  name: position
+                  value: 0

@@ -20,7 +20,6 @@ public class OperatorsService {
         this.repository = repository;
     }
 
-
     public SuccessSearchResponse getOperator(OperatorQuery query) {
         Operator operator = repository.findOne(Example.of(toExample(query)))
                 .orElseThrow(ResourceNotFoundException::new);
@@ -28,13 +27,13 @@ public class OperatorsService {
     }
 
     private SuccessSearchResponse toResponse(Operator operator) {
-        SuccessSearchResponse response = new SuccessSearchResponse();
-        response.setId(operator.getId());
-        response.setSurname(operator.getFamily());
-        response.setName(operator.getName());
-        response.setPatronymic(operator.getFarth());
-        response.setPosition(operator.getPosition());
-        return response;
+        return new SuccessSearchResponse(
+                operator.getId(),
+                operator.getFamily(),
+                operator.getName(),
+                operator.getFarth(),
+                operator.getPosition()
+        );
     }
 
     private Operator toExample(OperatorQuery query) {
@@ -45,6 +44,6 @@ public class OperatorsService {
 
     public BaseResponse addOperator(Operator operator) {
         repository.save(operator);
-        return new BaseResponse(true, "Успешно добавлено");
+        return new BaseResponse();
     }
 }
